@@ -1,0 +1,280 @@
+:root {
+    --background: #111111;
+    --block: #151515;
+    --field: #1c1c1c;
+    --border: rgba(255, 255, 255, 2%);
+    --border-hover: rgba(255, 255, 255, 5%);
+    --border-active: rgba(255, 255, 255, 9%);
+
+    --text: #f2f2f2;
+    --title: #b2b2b2;
+    --comment: #444444;
+
+    --font-roboto: "Roboto", serif;
+
+    --shadow-color: rgba(0, 0, 0, 5%);
+    --block-shadow: 4px 6px 18px var(--shadow-color);
+}
+
+/* Main part */
+*, *::after, *::before {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-roboto);
+    font-weight: 400;
+}
+
+head {
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 70vh;
+    background-color: var(--background);
+    padding: 15vh 25vw;
+    color: var(--text);
+    font-size: 16px;
+}
+
+body main {
+    width: 100%;
+    height: 100%;
+}
+
+body footer > p {
+    font-size: .8em;
+    color: var(--comment);
+    cursor: default;
+}
+
+body footer > p > a:hover {
+    color: var(--title);
+}
+
+/* Links */
+a:not(.button) {
+    text-decoration: none;
+    color: inherit;
+    transition: .3s ease-in-out;
+}
+
+/* Components */
+main .profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+main .profile img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: .5rem;
+    margin-right: 2rem;
+    box-shadow: var(--block-shadow);
+}
+
+main .profile .text h1 {
+    display: flex;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 1.6rem;
+}
+
+main .profile .text h1 #old-names {
+    display: flex;
+    margin-left: 1rem;
+}
+
+main .profile .text h1 #old-names ul {
+    position: absolute;
+    padding: 1rem;
+    background-color: var(--block);
+    border: 1px solid var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--block-shadow);
+    list-style: none;
+    visibility: hidden;
+    opacity: 0;
+    margin-top: 1.5rem;
+    transform: translateX(-40%);
+    transition: .3s ease-in-out;
+}
+
+main .profile .text h1 #old-names ul li {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+main .profile .text h1 #old-names.show ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Buttons */
+main .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.button {
+    font-size: 1rem;
+    color: var(--text);
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.button:not(.icon) {
+    --brand: var(--text);
+    --brand-border: var(--border-active);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--block);
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--block-shadow);
+    transition: .3s ease-in-out;
+}
+
+.button:not(.icon) svg, .button:not(.icon) img {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: .5rem;
+}
+
+.button:not(.icon) img {
+    border-radius: .2rem;
+}
+
+.button:not(.icon):hover {
+    color: var(--brand);
+    border-color: var(--brand-border);
+}
+
+.button.icon {
+    background: none;
+    border: none;
+}
+
+.button.icon svg {
+    font-size: 1.2em;
+    transition: .3s ease-in-out;
+}
+
+.button.icon:hover svg {
+    color: var(--title);
+}
+
+/* Modal */
+.modalBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--shadow-color);
+    backdrop-filter: blur(5px);
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1000;
+    transition: .3s ease-in-out;
+}
+
+.modalBox.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modalBox .modal {
+    background-color: var(--block);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--block-shadow);
+}
+
+.modalBox .modal > *:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.modalBox .modal h1 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: var(--title);
+}
+
+.modalBox .modal h1 svg {
+    color: var(--title);
+}
+
+.modalBox .modal table,
+.modalBox .modal table thead,
+.modalBox .modal table tbody {
+    display: block;
+}
+
+.modalBox .modal table {
+    border: 1px solid var(--border-hover);
+    border-radius: .5rem;
+    border-spacing: 0;
+}
+
+.modalBox .modal table tr {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid var(--border-hover);
+}
+
+.modalBox .modal table tbody tr:last-child {
+    border-bottom: 0;
+}
+
+.modalBox .modal table th, .modalBox .modal table td {
+    flex-basis: 100%;
+    padding: 1rem;
+    text-align: left;
+}
+
+.modalBox .modal table th:not(:last-child), .modalBox .modal table td:not(:last-child) {
+    border-right: 1px solid var(--border-hover);
+}
+
+.modalBox .modal table thead th:first-child {
+    flex-basis: calc(100% - .7rem);
+}
+
+.modalBox .modal table thead th {
+    font-weight: 600;
+}
+
+.modalBox .modal table tbody {
+    width: 60vw;
+    height: 40vh;
+    border-spacing: 0;
+    overflow-y: auto;
+}
+
+.modalBox .modal table tbody::-webkit-scrollbar {
+    width: .4rem;
+    background-color: var(--border-hover);
+    border-bottom-right-radius: .5rem;
+}
+
+.modalBox .modal table tbody::-webkit-scrollbar-thumb {
+    background-color: var(--comment);
+    border-radius: .5rem;
+}
