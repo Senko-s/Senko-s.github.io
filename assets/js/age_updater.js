@@ -1,4 +1,4 @@
-const birthday = new Date(document.getElementById("birthday").textContent),
+const birthday = document.getElementById("birthday").textContent,
       ageSpan = document.getElementById("age");
 
 function updateAge() {
