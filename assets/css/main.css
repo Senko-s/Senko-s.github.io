@@ -278,3 +278,41 @@ main .buttons {
     background-color: var(--comment);
     border-radius: .5rem;
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+        padding: 10vh 15vw;
+    }
+
+    body main {
+        width: 70vw;
+    }
+
+    body footer {
+        margin-top: 1rem;
+    }
+
+    main .profile {
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+
+    main .profile img {
+        margin-bottom: 1rem;
+        margin-right: 0;
+    }
+
+    main .profile .text {
+        text-align: center;
+    }
+
+    main .profile .text h1 {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    main .buttons {
+        grid-template-columns: 1fr;
+    }
+}
