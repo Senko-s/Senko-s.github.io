@@ -12,8 +12,10 @@ function loadUidList() {
         })
         .then((content) => {
             content.split("\n").forEach((line) => {
-                var uid = line.split("="),
-                    element = document.createElement("tr");
+                if (!line) return
+                const uid = line.split("=")
+                if (!uid || uid.length < 2) return
+                const element = document.createElement("tr");
 
                 element.innerHTML = `<td>${uid[0]}</td><td>${uid[1]}</td>`;
                 uidList.appendChild(element);
